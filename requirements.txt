@@ -4,4 +4,3 @@ diffusers==0.24.0
 transformers
 accelerate
 safetensors
-torch==2.2.0+cu118
