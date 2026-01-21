@@ -1,9 +1,1 @@
-fastapi
-uvicorn
-diffusers>=0.24.1
-torch
-safetensors
-
-
-
-
+runpod
