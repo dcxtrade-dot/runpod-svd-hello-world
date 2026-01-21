@@ -1,9 +1,9 @@
 fastapi
 uvicorn
-diffusers==0.24.0
-transformers
-accelerate
+diffusers>=0.24.1
+torch
 safetensors
+
 
 
 
