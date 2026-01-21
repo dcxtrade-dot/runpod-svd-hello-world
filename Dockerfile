@@ -1,4 +1,4 @@
-FROM ghcr.io/runpod/serverless-examples/python-cuda:latest
+FROM pytorch/pytorch:2.2.0-cuda11.8-cudnn8-runtime
 
 WORKDIR /app
 
