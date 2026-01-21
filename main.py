@@ -5,10 +5,14 @@ from diffusers import DiffusionPipeline
 
 app = FastAPI()
 
-model_id = "damo-vilab/text-to-video-ms-1.0"
+# lehčí model CogVideo (THUDM/CogVideoX1.5-5B-I2V)
+model_id = "THUDM/CogVideoX1.5-5B-I2V"
 
-# načtení modelu při startu aplikace
-pipe = DiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
+# načtení modelu
+pipe = DiffusionPipeline.from_pretrained(
+    model_id,
+    torch_dtype=torch.float16
+)
 pipe = pipe.to("cuda")
 
 class Request(BaseModel):
@@ -18,8 +22,10 @@ class Request(BaseModel):
 async def generate(req: Request):
     prompt = req.prompt
 
+    # generování videa
     video = pipe(prompt=prompt).videos[0]
 
+    # uložení
     out_path = "/tmp/output.mp4"
     video.save(out_path)
 
