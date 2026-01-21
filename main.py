@@ -5,8 +5,11 @@ from diffusers import DiffusionPipeline
 
 app = FastAPI()
 
-model_id = "damo-vilab/text-to-video-ms-1.7b"
-pipe = DiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16).to("cuda")
+model_id = "damo-vilab/text-to-video-ms-1.0"
+
+# načtení modelu při startu aplikace
+pipe = DiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
+pipe = pipe.to("cuda")
 
 class Request(BaseModel):
     prompt: str
