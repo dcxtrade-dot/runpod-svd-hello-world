@@ -1,3 +1,5 @@
 {
-  "command": "uvicorn main:app --host 0.0.0.0 --port 8000"
+  "name": "runpod-svd-hello-world",
+  "version": "1.0",
+  "type": "serverless"
 }
