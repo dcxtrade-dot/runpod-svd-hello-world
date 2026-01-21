@@ -5,10 +5,11 @@ from diffusers import StableVideoDiffusionPipeline
 
 app = FastAPI()
 
-model_id = "stabilityai/stable-video-diffusion-1"  # může být změněno později
+model_id = "stabilityai/stable-video-diffusion-1"
+
 pipe = StableVideoDiffusionPipeline.from_pretrained(
     model_id,
-    torch_dtype=torch.float16
+    torch_dtype=torch.float16,
 ).to("cuda")
 
 class Request(BaseModel):
@@ -23,7 +24,7 @@ async def generate(req: Request):
         num_inference_steps=25,
         height=512,
         width=512,
-        num_frames=16  # 4s při 4 fps
+        num_frames=16
     ).videos[0]
 
     out_path = "/tmp/output.mp4"
